@@ -1,10 +1,11 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from .models import Advertisements
 
 # Create your views here.
 
 def index(request):
-    advertesements = Advertisement.objects.all()
+    advertesements = Advertisements.objects.all()
     context = { 'advertisements' : advertisements}
     return render(request, 'index.html', context)
 
