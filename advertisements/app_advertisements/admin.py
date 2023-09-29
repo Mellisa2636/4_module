@@ -16,6 +16,7 @@ class AdvertisementsAdmin(admin.ModelAdmin): # наследуем класс Mod
         })
     )
 
+    
     @admin.action(description='Убрать возможность торга')
     def make_auction_false(self, request, queryset):
         queryset.update(auction=False)
@@ -23,7 +24,6 @@ class AdvertisementsAdmin(admin.ModelAdmin): # наследуем класс Mod
     @admin.action(description='Добавить возможность торга')
     def make_auction_true(self, request, queryset):
         queryset.update(auction=True)
-
 
 
 admin.site.register(Advertisements, AdvertisementsAdmin) # регистрация модели
