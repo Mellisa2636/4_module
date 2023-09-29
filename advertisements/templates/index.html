@@ -89,18 +89,18 @@
       <div class="col-auto w-50">
         <input type="text" class="form-control">
       </div>
-      {% for adv in advertisements %}
       <div class="col-auto">
         <button type="submit" class="btn btn-success mb-3">Найти</button>
       </div>
     </form>
   </div>
+  {% for adv in advertisements %}
   <div class="col">
     <div class="card mb-2" style="max-width: 1200px; margin-top: 20px;">
       <div class="row g-0">
         <div class="col-md-4">
           <a href="advertisement.html" class="nav-link">
-            <img src="{% static 'img/pict.png' %}" class="img-fluid rounded-start" alt="Card title">
+            <img src="{% if adv.image %} {{ adv.image.url }} {% endif %}" class="img-fluid rounded-start" alt="Card title">
           </a>
         </div>
         <div class="col-md-8">
@@ -111,8 +111,8 @@
             <a href="advertisement.html" class="nav-link">
               <p class="card-text">{{ adv.description }}</p>
               <span>Автор: {{ adv.user }}</span>
-              <p class="card-text"><small class="text-muted">{{ adv.created_date }}</small></p>
-              <p class="card-text"><small class="text-muted">{{ adv.price }}</small></p>
+              <p class="card-text"><small class="text-muted">Размещено: {{ adv.created_date }}</small></p>
+            <span>Цена: {{ adv.price }} руб.</span>
             </a>
           </div>
         </div>
@@ -127,7 +127,7 @@
     <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
             data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
             aria-label="Toggle navigation"></button>
-            <div class="collapse navbar-collapse" id="collapsibleNavId">
+    <div class="collapse navbar-collapse" id="collapsibleNavId">
       <ul class="navbar-nav me-auto mt-2 mt-lg-0">
         <li class="nav-item">
           <a class="nav-link active" href="#" aria-current="page">сюда<span
@@ -153,3 +153,4 @@
   </nav>
 </footer>
 {% endblock %}
+

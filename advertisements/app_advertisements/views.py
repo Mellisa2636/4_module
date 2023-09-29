@@ -6,7 +6,7 @@ from .models import Advertisements
 
 def index(request):
     advertesements = Advertisements.objects.all()
-    context = { 'advertisements' : advertisements}
+    context = { 'advertisements' : advertesements}
     return render(request, 'index.html', context)
 
 def top_sellers(request):
