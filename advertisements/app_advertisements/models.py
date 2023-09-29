@@ -3,6 +3,9 @@ from django.contrib import admin
 from django.utils import timezone
 from django.utils.html import format_html
 # Create your models here.
+
+# Создаем абстракцию-таблицу с полями названия, описания и тд.
+
 class Advertisements(models.Model):
     title = models.CharField(verbose_name='Заголовок',  max_length=128) # charhield - текстовое поле
     description = models.TextField('Описание') # TextField - тестовое поле большего размера
