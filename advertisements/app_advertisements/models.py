@@ -14,7 +14,7 @@ class Advertisements(models.Model):
     created_at = models.DateTimeField(auto_now_add=True) # auto_now_ add - время добавления автоматически
     updated_at = models.DateTimeField(auto_now=True) # auto_now - время изменения автоматически
     user = models.ForeignKey(to=User, on_delete=models.CASCADE, verbose_name='Пользователь') # расширили модель
-    image = models.ImageField(verbose_name='Изображение', upload_to='advertisements/') #
+    image = models.ImageField(verbose_name='Изображение', upload_to='advertisements/') 
 
 
 
@@ -33,9 +33,15 @@ class Advertisements(models.Model):
             return format_html('<span style="color: green; font-weight: bold">Сегодня в {}</span>', updated_time)
         return self.updated_at.strftime("%d.%m.%Y в %H:%M:%S")
 
+    @admin.display(description='Картинка')
+    def get_html_image(self):
+        if self.image:
+            return format_html(
+                '<img src="{url}" style="max-width: 80px; max-height: 80px;"', url=self.image.url)
+
     
     def __str__(self):
-        return f"Advertisement(id={self.id}, title={self.title}, price={self.price})"
+        return f"Advertisements(id={self.id}, title={self.title}, price={self.price})"
 
     class Meta:
         db_table = "advertisements"
