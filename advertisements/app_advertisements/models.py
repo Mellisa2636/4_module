@@ -35,7 +35,7 @@ class Advertisements(models.Model):
 
     @admin.display(description='Картинка')
     def get_html_image(self):
-        if self.image:
+        if self.image: # если картинка есть, появляеться мини картинка в админке
             return format_html(
                 '<img src="{url}" style="max-width: 80px; max-height: 80px;"', url=self.image.url)
 
